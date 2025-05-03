@@ -1,0 +1,28 @@
+services:
+  frontend:
+    image: phoom005/devops_mern_frontend:1.0
+    ports:
+      - "4040:3000"
+    environment:
+      - REACT_APP_API_URL=http://backend:5000 # ใช้ชื่อ service ของ backend
+    depends_on:
+      - backend
+
+  backend:
+    image: phoom005/devops_mern_backend:1.0
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://narongsak05n:ProjectLocal@cluster0.uphlubt.mongodb.net/post?retryWrites=true&w=majority&appName=Cluster0
+    depends_on:
+      - db
+
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db 
+
+volumes:
+  mongo_data:
