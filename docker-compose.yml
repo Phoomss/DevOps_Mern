@@ -11,7 +11,7 @@ services:
   backend:
     image: phoom005/devops_mern_backend:1.0
     ports:
-      - "5000:5000"
+      - "8080:8080"
     environment:
       - MONGO_URI=mongodb+srv://narongsak05n:ProjectLocal@cluster0.uphlubt.mongodb.net/post?retryWrites=true&w=majority&appName=Cluster0
     depends_on:
